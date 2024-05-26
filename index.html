@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeuse Fête Maman</title>
+    <!-- Ajout du script fireworks-js -->
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2/dist/fireworks.js"></script>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: rgb(142, 94, 186);
+    }
+
+    h1{
+        text-decoration: underline;
+    }
+
+    h1,
+    h2,
+    h4, h3 {
+        text-align: center;
+        font-family: sans-serif;
+        color: white;
+    }
+
+    img {
+        height: 400px;
+        width: 400px;
+    }
+
+    .img {
+        display: flex;
+        justify-content: center;
+    }
+
+    .hidden-content {
+        display: none;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .img img {
+        cursor: pointer;
+    }
+
+    button {
+        display: block;
+        width: 250px;
+        margin: auto;
+        margin-top: 20px;
+        background-color: red;
+        border: 2px solid white;
+        color: white;
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    #newContent {
+        position: relative;
+    }
+
+    #fireworksContainer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        /* Pour que les feux d'artifice ne gênent pas l'interaction avec d'autres éléments */
+    }
+
+    .surprise{
+        font-size: 50px;
+    }
+    .liste img, .moi{
+        width: 400px;
+        height: 600px;
+    }
+</style>
+
+<body>
+    <div class="all">
+        <h1>
+            Coucou Maman c'est Bébé Schrou avec mon petit nez !
+        </h1>
+
+        <h4>Avec l'aide de Papa on t'a fait un site web pour te dire quelque chose</h4>
+
+        <div class="img">
+            <img src="niou.jpg" alt="">
+        </div>
+        <button id="showContentBtn" class="heart-button">
+            <span id="buttonText">Clique ici pour voir la suite</span>
+        </button>
+
+        <div class="hidden-content" id="hiddenContent">
+            <h2>Clique sur mon petit nez pour découvrir ta surprise</h2>
+            <div class="img">
+                <a href="#" id="noseImage">
+                    <img src="nez.jpg" alt="Nez">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden-content" id="newContent">
+        <!-- Nouveau contenu qui sera affiché après le clic -->
+        <h1 class="surprise">Surprise !
+        </h1>
+
+        <h1>Je te souhaite une Méga super Fête des Mères maman !!!!!</h1>
+        <h2>Tu es la meilleure de toutes <br> Je t'aime super méga fort et j'espere que toi aussi (meme quand je te mange tes cables qui sont super bon hihi !!!)</h2>
+        <h2>Tu m'as Beaucoup Manqué, plus jamais tu pars aussi longtemps sinon GnouGnou Vénère et tu sais c'est quoi gnougnou vénère.</h2>
+        <img src="venere.jpg" alt="">
+        <H4>Papa m'a dit de te dire qu'il t'aime tres tres tres tres tres tres tres fort (Il m'en a dit d'autre mais relou le type).</H4>
+        <img class="moi" src="IMG_4545.JPG" alt="">
+        <H3>Passe une bonne soirée avec moi fait moi plein de bisous et de calins, j'espere dormir avec toi pour te marcher dessus à 4h du matin héhé!!</H3>
+        <!-- Container pour les feux d'artifice -->
+        <H1>Maintenant Voici une compilation de moi et de mon petit nez (parce que je suis trop beau)</H1>
+        <div class="liste">
+            <img src="IMG_4546.JPG" alt="">
+            <img src="IMG_4547.JPG" alt="">
+            <img src="IMG_4548.JPG" alt="">
+            <img src="IMG_4549.JPG" alt="">
+            <img src="IMG_4550.JPG" alt="">
+            <img src="IMG_4551.JPG" alt="">
+            <img src="IMG_4552.JPG" alt="">
+            <img src="IMG_4553.JPG" alt="">
+            <img src="IMG_4554.JPG" alt="">
+        </div>
+
+        <h2>Voila c'est fini !! J'espère que ça tu as aimé. Gros bisous De Gnou et de Roro</h2>
+    </div>
+
+    <script>
+        const showContentBtn = document.getElementById('showContentBtn');
+        const buttonText = document.getElementById('buttonText');
+        const hiddenContent = document.getElementById('hiddenContent');
+        const noseImage = document.getElementById('noseImage');
+        const newContent = document.getElementById('newContent');
+        const allDiv = document.querySelector('.all');
+        const fireworksContainer = document.getElementById('fireworksContainer');
+
+        showContentBtn.addEventListener('click', function () {
+            hiddenContent.style.display = 'block';
+        });
+
+        showContentBtn.addEventListener('mouseover', function () {
+            buttonText.textContent = 'Je t\'aime!';
+        });
+
+        showContentBtn.addEventListener('mouseout', function () {
+            buttonText.textContent = 'Clique ici pour voir la suite!';
+        });
+
+        noseImage.addEventListener('click', function (event) {
+            event.preventDefault();
+            hiddenContent.style.display = 'none';
+            allDiv.remove(); // Supprime la div .all
+            newContent.style.display = 'block';
+            startFireworks();
+        });
+    </script>
+</body>
+
+</html>
